@@ -1,0 +1,1484 @@
+
+/* =====================================================
+   SISTEMA DE GESTIÓN DE PRÉSTAMOS
+   ESTILOS GENERALES
+===================================================== */
+
+:root {
+    --azul-oscuro: #16375C;
+    --azul: #1274E0;
+    --azul-claro: #E8F1FB;
+    --fondo: #EEF3F9;
+    --texto: #1F2F45;
+    --texto-secundario: #53657A;
+    --borde: #C9D3DE;
+    --verde: #1B8A2E;
+    --rojo: #E5322D;
+    --naranja: #F7931E;
+    --morado: #6D28D9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: var(--texto);
+    background: var(--fondo);
+}
+
+button, input, select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* =====================================================
+   ESTRUCTURA PRINCIPAL
+===================================================== */
+
+.contenedor {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 203px minmax(0, 1fr);
+    grid-template-rows: 76px minmax(0, 1fr);
+    background: var(--fondo);
+}
+
+.encabezado-superior {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 24px;
+    color: white;
+    background: var(--azul-oscuro);
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.marca .logo {
+    font-size: 30px;
+}
+
+.marca h1 {
+    color: white;
+    font-size: 22px;
+}
+
+.usuario-superior {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.usuario-superior button {
+    padding: 9px 13px;
+    color: white;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.5);
+    border-radius: 5px;
+}
+
+.menu-lateral {
+    grid-column: 1;
+    grid-row: 2;
+    min-height: calc(100vh - 76px);
+    padding: 20px 10px;
+    background: var(--azul-oscuro);
+}
+
+.menu-lateral nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu-lateral a {
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 11px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.menu-lateral a:hover,
+.menu-lateral a.activo {
+    background: #5C7896;
+}
+
+.menu-lateral .icono {
+    width: 26px;
+    text-align: center;
+    font-size: 21px;
+}
+
+.texto-menu {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.contenido {
+    grid-column: 2;
+    grid-row: 2;
+    min-width: 0;
+    padding: 22px 24px 28px;
+    overflow: auto;
+}
+
+/* =====================================================
+   TÍTULOS
+===================================================== */
+
+.titulo-seccion {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 20px;
+}
+
+.titulo-seccion > span {
+    font-size: 28px;
+}
+
+.titulo-pagina {
+    margin-bottom: 5px;
+    color: #12294A;
+    font-size: 30px;
+}
+
+.descripcion-pagina {
+    color: var(--texto-secundario);
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+/* =====================================================
+   BARRAS DE ACCIONES Y BUSCADORES
+===================================================== */
+
+.barra-acciones {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 15px 0;
+}
+
+.barra-acciones label,
+.selector-cliente label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.barra-acciones input,
+.barra-acciones select,
+.selector-cliente select,
+.config-formulario input,
+.configuracion-grid select {
+    min-height: 38px;
+    padding: 8px 11px;
+    color: var(--texto);
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+    outline: none;
+}
+
+.barra-acciones input:focus,
+.barra-acciones select:focus {
+    border-color: var(--azul);
+}
+
+.busqueda {
+    display: flex;
+    gap: 8px;
+    min-width: min(100%, 340px);
+}
+
+.busqueda input {
+    width: 310px;
+    max-width: 100%;
+}
+
+.busqueda button,
+.btn-principal {
+    min-height: 38px;
+    padding: 9px 15px;
+    color: white;
+    background: var(--azul);
+    border: 0;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.busqueda button:hover,
+.btn-principal:hover {
+    background: #0D5FB9;
+}
+
+/* =====================================================
+   TARJETAS E INDICADORES
+===================================================== */
+
+.indicadores-dashboard {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+    margin: 18px 0;
+}
+
+.tarjeta-indicador {
+    min-height: 128px;
+    padding: 17px;
+    background: white;
+    border: 1px solid #DCE4EE;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(24,48,78,.05);
+}
+
+.icono-indicador {
+    margin-bottom: 9px;
+    color: var(--azul);
+    font-size: 23px;
+}
+
+.tarjeta-indicador h3 {
+    margin-bottom: 7px;
+    color: var(--texto-secundario);
+    font-size: 14px;
+}
+
+.tarjeta-indicador strong {
+    display: block;
+    color: #12294A;
+    font-size: 23px;
+}
+
+.tarjeta-indicador p {
+    margin-top: 5px;
+    color: #758397;
+    font-size: 12px;
+}
+
+/* =====================================================
+   PANELES Y TABLAS
+===================================================== */
+
+.panel-dashboard {
+    min-width: 0;
+    margin: 16px 0;
+    padding: 17px;
+    background: white;
+    border: 1px solid #DCE4EE;
+    border-radius: 7px;
+}
+
+.panel-dashboard h3 {
+    margin-bottom: 14px;
+    color: #193A60;
+    font-size: 18px;
+}
+
+.encabezado-tabla {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.encabezado-tabla h3 {
+    margin: 0;
+}
+
+.encabezado-tabla > div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.encabezado-tabla input,
+.encabezado-tabla select {
+    min-height: 35px;
+    padding: 7px 10px;
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+}
+
+.tabla-scroll {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla-scroll table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.tabla-scroll th {
+    padding: 12px 10px;
+    color: #12294A;
+    background: #F1F4F8;
+    border-bottom: 1px solid #D9E1EA;
+    text-align: left;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.tabla-scroll td {
+    padding: 11px 10px;
+    border-bottom: 1px solid #E4E9F0;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.tabla-scroll tbody tr:hover {
+    background: #F7FAFD;
+}
+
+.estado {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.estado.activo {
+    color: #176B32;
+    background: #DDF3E3;
+}
+
+.estado.inactivo {
+    color: #A12B2B;
+    background: #FCE3E3;
+}
+
+.accion {
+    padding: 5px 7px;
+    color: var(--azul);
+    background: transparent;
+    border: 0;
+}
+
+.accion.eliminar {
+    color: var(--rojo);
+}
+
+.pie-tabla {
+    margin-top: 13px;
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+.paginacion {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    margin-top: 13px;
+}
+
+.paginacion button {
+    padding: 7px 11px;
+    color: #34465C;
+    background: white;
+    border: 1px solid #D5DDE7;
+    border-radius: 4px;
+}
+
+.paginacion button.pagina-activa {
+    color: white;
+    background: var(--azul);
+}
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+.dashboard-graficos {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 16px;
+}
+
+.grafico-barras {
+    min-height: 230px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 14px;
+    padding: 18px 10px 5px;
+}
+
+.barra-mes {
+    flex: 1;
+    height: 205px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 7px;
+    color: var(--texto-secundario);
+    font-size: 11px;
+}
+
+.barra-fondo {
+    width: min(38px, 75%);
+    height: 145px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: #E9EFF7;
+    border-radius: 5px 5px 0 0;
+}
+
+.barra-valor {
+    width: 100%;
+    background: #2879C7;
+    border-radius: 5px 5px 0 0;
+}
+
+.distribucion-cobro {
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.grafico-circular {
+    width: 145px;
+    height: 145px;
+    display: grid;
+    place-items: center;
+    color: white;
+    background: conic-gradient(#2879C7 0 78%, #F7931E 78% 100%);
+    border: 17px solid #EAF0F7;
+    border-radius: 50%;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.distribucion-cobro p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.estados-resumen {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.estados-resumen > div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 14px;
+    background: #F5F8FC;
+    border-radius: 6px;
+}
+
+.estados-resumen strong {
+    color: #173B61;
+    font-size: 23px;
+}
+
+.estados-resumen span {
+    color: var(--texto-secundario);
+    font-size: 13px;
+}
+
+/* =====================================================
+   ABONO - SELECCIÓN DE COBRO Y FECHA
+===================================================== */
+
+.abono-seleccion {
+    display: grid;
+    grid-template-columns: 150px minmax(200px, 1fr) 130px 165px;
+    align-items: center;
+    gap: 10px;
+    min-height: 55px;
+    margin: 15px 0 10px;
+    padding: 9px 14px;
+    background: #E8F1FB;
+    border: 1px solid #C9DCF0;
+    border-radius: 5px;
+}
+
+.abono-seleccion label {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.abono-seleccion input,
+.abono-seleccion select {
+    width: 100%;
+    height: 35px;
+    min-width: 0;
+    padding: 6px 9px;
+    background: white;
+    border: 1px solid #C9D3DE;
+    border-radius: 4px;
+}
+
+/* =====================================================
+   ABONO - INFORMACIÓN DEL CLIENTE
+===================================================== */
+
+.abono-cliente {
+    min-height: 187px;
+    padding: 0 13px 12px;
+    background: #F3F8FE;
+    border: 1px solid #C9DCF0;
+    border-radius: 5px;
+}
+
+.abono-titulo-cliente {
+    min-height: 39px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 -13px 12px;
+    padding: 5px 13px;
+    color: #173B61;
+    background: #E1EDFA;
+}
+
+.abono-titulo-cliente span {
+    font-size: 20px;
+}
+
+.abono-titulo-cliente h3 {
+    font-size: 19px;
+}
+
+.abono-datos-cliente {
+    display: grid;
+    grid-template-columns: 420px minmax(150px, 1fr) minmax(150px, 1fr) 120px;
+    align-items: center;
+    gap: 12px;
+}
+
+.abono-datos-cliente label {
+    color: var(--texto);
+    font-size: 14px;
+}
+
+.abono-datos-cliente input {
+    width: 100%;
+    min-width: 0;
+    height: 30px;
+    padding: 5px 9px;
+    background: white;
+    border: 1px solid #C9D3DE;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.abono-datos-cliente input[readonly] {
+    background: #F8FAFC;
+}
+
+.abono-cedula {
+    display: grid;
+    grid-template-columns: 100px minmax(0, 1fr);
+    align-items: center;
+    gap: 5px;
+}
+
+.abono-buscar {
+    display: flex;
+    gap: 5px;
+}
+
+.abono-buscar button {
+    min-width: 38px;
+    color: white;
+    background: var(--azul);
+    border: 0;
+    border-radius: 4px;
+}
+
+.abono-campos-cliente {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3px;
+}
+
+.abono-estado-cliente {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.abono-estado-cliente span {
+    display: inline-block;
+    padding: 7px 10px;
+    color: #176B32;
+    background: #D6F0D9;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.abono-navegacion {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 10px;
+}
+
+.abono-navegacion button {
+    width: 147px;
+    height: 34px;
+    color: white;
+    background: #9AA3AD;
+    border: 0;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.abono-navegacion button:last-child {
+    background: var(--azul);
+}
+
+/* =====================================================
+   ABONO - TRES PANELES
+===================================================== */
+
+.abono-paneles {
+    display: grid;
+    grid-template-columns: 455fr 348fr 460fr;
+    gap: 11px;
+    align-items: stretch;
+    margin-top: 10px;
+}
+
+.panel-prestamo,
+.panel-abono,
+.panel-cobro-dia {
+    min-width: 0;
+    min-height: 406px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.panel-prestamo {
+    background: #F1F9F2;
+    border: 1px solid #C7E5CC;
+}
+
+.panel-abono {
+    background: #FDEEEE;
+    border: 1px solid #F3C6C6;
+}
+
+.panel-cobro-dia {
+    background: #FEF6E8;
+    border: 1px solid #F7DDB0;
+}
+
+.titulo-panel {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 0 12px;
+}
+
+.titulo-panel h3 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.titulo-panel > span {
+    width: 34px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    color: white;
+    border-radius: 4px;
+    font-size: 17px;
+}
+
+.titulo-verde {
+    color: #156B2B;
+    background: #E3F3E6;
+}
+
+.titulo-verde > span {
+    background: var(--verde);
+}
+
+.titulo-rojo {
+    color: #C81E1E;
+    background: #FBE0E0;
+}
+
+.titulo-rojo > span {
+    background: var(--rojo);
+}
+
+.titulo-naranja {
+    color: #D24A06;
+    background: #FDEBCB;
+}
+
+.titulo-naranja > span {
+    background: var(--naranja);
+}
+
+.prestamo-fila {
+    min-height: 31.6px;
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    background: white;
+    border-bottom: 1px solid #E0EDE2;
+}
+
+.prestamo-fila span,
+.prestamo-fila strong {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    padding: 5px 12px;
+    border-right: 1px solid #E0EDE2;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.prestamo-fila.saldo {
+    min-height: 40px;
+    background: #DCEBFA;
+}
+
+.prestamo-fila.saldo span,
+.prestamo-fila.saldo strong {
+    color: #12294A;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.btn-ingresar-prestamos {
+    width: calc(100% - 28px);
+    min-height: 48px;
+    margin: 8px 14px;
+    color: white;
+    background: var(--verde);
+    border: 0;
+    border-radius: 4px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.panel-abono > label {
+    display: block;
+    margin: 20px 14px 8px;
+    font-size: 15px;
+}
+
+.valor-abono {
+    display: flex;
+    margin: 0 14px;
+}
+
+.valor-abono span {
+    width: 34px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    background: white;
+    border: 2px solid var(--azul);
+    border-right: 0;
+    border-radius: 4px 0 0 4px;
+    font-size: 17px;
+}
+
+.valor-abono input {
+    width: calc(100% - 34px);
+    min-width: 0;
+    height: 40px;
+    padding: 7px 10px;
+    background: white;
+    border: 2px solid var(--azul);
+    border-radius: 0 4px 4px 0;
+    font-size: 16px;
+}
+
+.botones-abono {
+    display: flex;
+    gap: 10px;
+    margin: 26px 14px;
+}
+
+.botones-abono button {
+    flex: 1;
+    min-width: 0;
+    min-height: 46px;
+    color: white;
+    border: 0;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.botones-abono button:first-child {
+    background: var(--verde);
+}
+
+.botones-abono button:last-child {
+    background: var(--rojo);
+}
+
+.cobro-fila {
+    min-height: 42.5px;
+    display: grid;
+    grid-template-columns: 105px 34px minmax(70px, 106px) minmax(95px, 1fr);
+    align-items: center;
+    gap: 0;
+    padding: 2px 12px;
+}
+
+.cobro-fila label {
+    font-size: 15px;
+}
+
+.cobro-fila input {
+    grid-column: 2 / 4;
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+    padding: 6px 10px;
+    background: white;
+    border: 1px solid #C9D3DE;
+    border-radius: 0;
+}
+
+.cobro-fila input[readonly] {
+    background: #E6E9EE;
+}
+
+.cobro-fila small {
+    grid-column: 4;
+    padding-left: 8px;
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.botones-cobro {
+    display: flex;
+    gap: 11px;
+    padding: 0 14px;
+    margin-top: 18px;
+}
+
+.botones-cobro button {
+    flex: 1;
+    min-width: 0;
+    min-height: 52px;
+    color: white;
+    border: 0;
+    border-radius: 4px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.botones-cobro button:first-child {
+    background: var(--azul);
+}
+
+.botones-cobro button:last-child {
+    background: var(--verde);
+}
+
+/* =====================================================
+   ABONO - HISTORIAL
+===================================================== */
+
+.abono-historial {
+    margin-top: 12px;
+    padding: 0 8px 12px;
+    overflow: hidden;
+    background: white;
+    border: 1px solid #DDD3F5;
+    border-radius: 5px;
+}
+
+.titulo-historial {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin: 0 -8px 5px;
+    padding: 0 12px;
+    color: var(--morado);
+    background: #EDE6FC;
+}
+
+.titulo-historial > span {
+    width: 31px;
+    height: 31px;
+    display: grid;
+    place-items: center;
+    color: white;
+    background: var(--morado);
+    border-radius: 4px;
+}
+
+.titulo-historial h3 {
+    font-size: 19px;
+}
+
+.abono-historial .tabla-scroll table {
+    min-width: 1100px;
+}
+
+.abono-historial .tabla-scroll th,
+.abono-historial .tabla-scroll td {
+    padding: 10px 5px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.abono-historial .tabla-scroll th {
+    font-size: 13px;
+}
+
+/* =====================================================
+   ENRUTAR
+===================================================== */
+
+.formulario-enrutar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1000px;
+    padding: 22px;
+    background: white;
+    border: 1px solid #DCE4EE;
+    border-radius: 7px;
+}
+
+.campo-enrutar {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo-enrutar > label:first-child {
+    color: #173B61;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.campo-enrutar input,
+.campo-enrutar select {
+    min-height: 39px;
+    padding: 8px 10px;
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+    background: white;
+}
+
+.opciones-ubicacion {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.opciones-ubicacion label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+}
+
+.botones-enrutar {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.botones-enrutar button {
+    min-width: 130px;
+    min-height: 40px;
+    color: white;
+    background: var(--azul);
+    border: 0;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.botones-enrutar button:last-child {
+    background: #68778A;
+}
+
+/* =====================================================
+   REPORTES
+===================================================== */
+
+#tabla-reportes {
+    min-width: 1050px;
+}
+
+.btn-detalles {
+    padding: 6px 9px;
+    color: white;
+    background: var(--azul);
+    border: 0;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+/* =====================================================
+   CONFIGURACIÓN
+===================================================== */
+
+.configuracion-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.configuracion-grid > .panel-dashboard {
+    margin: 0;
+}
+
+.configuracion-grid select {
+    display: block;
+    width: 100%;
+    margin-bottom: 13px;
+}
+
+.config-formulario {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 7px;
+    margin: 15px 0;
+}
+
+.config-formulario label {
+    margin-top: 6px;
+    color: #34465C;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.config-formulario input {
+    width: 100%;
+}
+
+/* =====================================================
+   INICIO DE SESIÓN
+===================================================== */
+
+.pantalla-login {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #EEF3F9;
+}
+
+.login-header {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 6%;
+    color: white;
+    background: var(--azul-oscuro);
+}
+
+.login-header h2 {
+    font-size: 21px;
+}
+
+.login-header nav {
+    display: flex;
+    gap: 22px;
+}
+
+.login-header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login-contenido {
+    flex: 1;
+    width: min(1120px, 92%);
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    align-items: center;
+    gap: 55px;
+    margin: 35px auto;
+}
+
+.login-presentacion h1 {
+    margin-bottom: 18px;
+    color: #173B61;
+    font-size: clamp(30px, 4vw, 43px);
+    line-height: 1.15;
+}
+
+.login-presentacion p {
+    max-width: 520px;
+    color: #53657A;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.login-ilustracion {
+    margin-top: 25px;
+    color: #2879C7;
+    font-size: 120px;
+}
+
+.login-formulario {
+    width: 100%;
+    max-width: 440px;
+    justify-self: center;
+    padding: 32px;
+    background: white;
+    border: 1px solid #DCE4EE;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(22,55,92,.08);
+}
+
+.login-logo {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 15px;
+    color: white;
+    background: var(--azul);
+    border-radius: 50%;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.login-formulario h2,
+.login-formulario > p {
+    text-align: center;
+}
+
+.login-formulario h2 {
+    margin-bottom: 8px;
+    color: #173B61;
+    font-size: 25px;
+}
+
+.login-formulario > p {
+    margin-bottom: 24px;
+    color: #758397;
+    font-size: 13px;
+}
+
+.login-formulario form > label {
+    display: block;
+    margin: 14px 0 7px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.login-formulario form > input,
+.password-contenedor input {
+    width: 100%;
+    min-height: 43px;
+    padding: 10px 12px;
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+}
+
+.password-contenedor {
+    display: flex;
+}
+
+.password-contenedor input {
+    border-radius: 5px 0 0 5px;
+}
+
+.password-contenedor button {
+    min-width: 45px;
+    background: #F1F4F8;
+    border: 1px solid var(--borde);
+    border-left: 0;
+    border-radius: 0 5px 5px 0;
+}
+
+.login-opciones {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 15px 0;
+    font-size: 12px;
+}
+
+.login-opciones label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.login-opciones a {
+    color: var(--azul);
+    text-decoration: none;
+}
+
+.btn-login,
+.btn-registro {
+    width: 100%;
+    min-height: 44px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.btn-login {
+    color: white;
+    background: var(--azul);
+    border: 0;
+}
+
+.btn-registro {
+    color: var(--azul);
+    background: white;
+    border: 1px solid var(--azul);
+}
+
+.login-separador {
+    margin: 14px 0;
+    color: #8793A3;
+    text-align: center;
+    font-size: 12px;
+}
+
+.login-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 17px 5%;
+    color: #E8EFF7;
+    background: var(--azul-oscuro);
+    font-size: 12px;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1200px) {
+    .indicadores-dashboard {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .abono-datos-cliente {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .abono-paneles {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-prestamo,
+    .panel-abono,
+    .panel-cobro-dia {
+        min-height: auto;
+        padding-bottom: 12px;
+    }
+
+    .prestamo-fila {
+        min-height: 34px;
+    }
+
+    .abono-seleccion {
+        grid-template-columns: 130px minmax(160px, 1fr);
+    }
+}
+
+@media (max-width: 850px) {
+    .contenedor {
+        grid-template-columns: 75px minmax(0, 1fr);
+        grid-template-rows: auto minmax(0, 1fr);
+    }
+
+    .encabezado-superior {
+        grid-column: 1 / 3;
+        min-height: 70px;
+        padding: 10px 14px;
+    }
+
+    .marca h1 {
+        font-size: 16px;
+        white-space: normal;
+    }
+
+    .marca .logo {
+        font-size: 24px;
+    }
+
+    .usuario-superior {
+        gap: 8px;
+        font-size: 11px;
+    }
+
+    .usuario-superior > span:nth-child(3) {
+        display: none;
+    }
+
+    .menu-lateral {
+        min-height: calc(100vh - 70px);
+        padding: 14px 6px;
+    }
+
+    .menu-lateral a {
+        justify-content: center;
+        padding: 10px 4px;
+    }
+
+    .menu-lateral .texto-menu {
+        display: none;
+    }
+
+    .menu-lateral .icono {
+        width: auto;
+        font-size: 22px;
+    }
+
+    .contenido {
+        padding: 16px;
+    }
+
+    .dashboard-graficos,
+    .configuracion-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .estados-resumen {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .formulario-enrutar {
+        grid-template-columns: 1fr;
+    }
+
+    .botones-enrutar {
+        grid-column: 1;
+    }
+
+    .login-contenido {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .login-presentacion {
+        text-align: center;
+    }
+
+    .login-presentacion p {
+        margin: auto;
+    }
+
+    .login-ilustracion {
+        display: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .indicadores-dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .abono-datos-cliente {
+        grid-template-columns: 1fr;
+    }
+
+    .abono-seleccion {
+        grid-template-columns: 1fr;
+    }
+
+    .abono-cedula {
+        grid-template-columns: 90px minmax(0, 1fr);
+    }
+
+    .abono-navegacion {
+        gap: 10px;
+    }
+
+    .abono-navegacion button {
+        width: 50%;
+    }
+
+    .cobro-fila {
+        grid-template-columns: 90px 30px minmax(60px, 1fr);
+    }
+
+    .cobro-fila small {
+        display: none;
+    }
+
+    .botones-cobro,
+    .botones-abono {
+        flex-direction: column;
+    }
+
+    .busqueda {
+        width: 100%;
+    }
+
+    .busqueda input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .login-header {
+        flex-direction: column;
+        justify-content: center;
+        padding: 14px;
+    }
+
+    .login-header nav {
+        gap: 13px;
+    }
+
+    .login-formulario {
+        padding: 22px;
+    }
+
+    .login-footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
